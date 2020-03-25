@@ -1,15 +1,20 @@
 const express = require("express")
-
 const routes = express.Router()
 
-routes.post("/test", (request, response) => {
-  const body = request.body
+const OngController = require("./controllers/ongControllers")
+const IncidentsController = require("./controllers/incidentControllers")
+const ProfileController = require("./controllers/profileControllers")
+const SessionController = require("./controllers/sessionController")
 
-  console.log("Here your body: ", body)
+routes.post("/sessions", SessionController.create)
 
-  return response.json({
-    status: "Info Send"
-  })
-})
+routes.get("/allOngs", OngController.index)
+routes.post("/ongs", OngController.create)
+
+routes.get("/profile", ProfileController.index)
+
+routes.get("/allIncidents", IncidentsController.index)
+routes.post("/incidents", IncidentsController.create)
+routes.delete("/incidents/:id", IncidentsController.delete)
 
 module.exports = routes
