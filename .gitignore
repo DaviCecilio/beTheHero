@@ -1,0 +1,6 @@
+*.log
+*.sql
+*.sqlite
+
+node_modules/
+logs/
